@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="320px" height="160px" style="border: 1px solid #000;"></canvas>
+		 <script type="text/javascript">
+		 //获取canvas
+		 	var canvas=document.getElementById("canvas")
+		 	var cxt=canvas.getContext("2d")
+		 	
+		 	//背景图片是随机的，，产生一个随机的图片
+		 	//把图放到数组里
+//		 	通过下标
+             var arr=["../img/p_0.jpg","../img/p_1.jpg","../img/hd2.jpg","../img/hd3.jpg"]
+		 	  var num=Math.floor(Math.random()*4);
+		 	  var _src=arr[num];
+		 	var isMouseDown=false;
+		 	
+		 	//canvas把图片插入
+		 	canvas.style.background="url("+_src+") no-repeat center center";
+		 	//添加灰色模板
+		 	cxt.fillStyle="#eee";
+		 	cxt.rect(0,0,320,160);
+		 	cxt.fill();
+		 	//添加组合
+		 	cxt.globalCompositeOperation="destination-out"
+		 	//添加事件
+		 	//鼠标按下
+		 	canvas.addEventListener("mousedown",function(e){
+		 		isMouseDown=true;
+		 		return false;
+		 	},false)
+		 	//鼠标移动
+		 	canvas.addEventListener("mousemove",function(e){
+		 		
+		 		if(isMouseDown){
+		 			var e=e||window.event;
+		 			var positer=windowTocanvas(e);
+		 			var redius=20;
+		 			
+		 			cxt.beginPath();
+		 			 cxt.arc(positer.x,positer.y,redius,0,2*Math.PI,false);
+		 			 cxt.fill();
+		 			cxt.closePath();
+		 		}
+		 		return false
+		 		
+		 	},false)
+		 	//鼠标释放up
+		 	canvas.addEventListener("mouseup",function(e){
+		 		isMouseDown=false;
+		 		return false
+		 	},false)
+		 	//获取鼠标相对于canvas左上角的准确位置
+		 	 function windowTocanvas(e){
+//		 	 	取到canvas相对于可视区域的 left top
+                var rect=canvas.getBoundingClientRect();
+                return{
+                	x:e.clientX-rect.left,
+                	y:e.clientY-rect.top
+                }
+		 	 }
+		 	
+		 	
+		 	
+		 	
+		 	
+		 </script>
+		 
+		 
+		 
+	</body>
+</html>
