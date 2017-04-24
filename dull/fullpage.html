@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css"/>
+		<link rel="stylesheet" type="text/css" href="css/new_file.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<style type="text/css">
+			#fullpageMenu{
+			    position: fixed;
+			    top: 40px;
+			    left: 0;
+			    height: 40px;
+			    z-index: 70;
+			    width: 100%;
+			    padding: 0;
+			    margin: 0;
+			}
+			#fullpageMenu li{
+				display: inline-block;
+				margin: 10px;
+				color: #000;
+				background: #fff;
+				background: rgba(255,255,255, 0.5);
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+				list-style: none;
+			}
+			#fullpageMenu li a{
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+	    <div id="fullpage">
+		   	<div class="section" style="position: relative;">
+		   		<div class="head">
+			   		<div class="nav" style="	overflow: hidden;">
+			   			<ul>
+			   				<li>Mac</li>
+			   				<li>iPad</li>
+			   				<li>iPhone</li>
+			   				<li>Watch</li>
+			   				<li>Music</li>
+			   				<li>技术支持</li>
+			   				<li><i class="icon iconfont">&#xe67a;</i></li>
+			   				<li><i class="icon iconfont">&#xe60f;</i></li>
+			   			</ul>
+			   		</div>
+		   		</div>
+		   		<div class="change">
+			   		<img class="redapple2 red" src="img/iphone7-gallery1-201703.jpg" />
+			   		<img class="redapple1 red" src="img/iphone7-gallery2-.jpg"/>
+			   		<img class="redapple3 red" src="img/iphone7-gallery3-201703.jpg" />
+			   		 <p id="ziti"><span>ipone7</span>现更以红<span>色呈现</span></p>
+		   		</div>
+		   	</div>
+		   	 <div class="section">
+		   	 	<div class="sec2">
+		   		<img id="bg" src="img/two1.jpg" />
+		   		<img id="two_phone" src="img/iphone-two.png" />
+		   		<img id="two_phone2" src="img/iphone-two.png" />
+		   		<img id="two_phone3" src="img/iphone-two.png" />
+		   		</div>
+		   	</div>
+		   	<div class="section">
+		   		    <div class="slide">
+		   		    <div class="slide1">
+		   		    <img id="ip1" src="img/slider1.jpg"/>
+		   		    <img id="ip2" src="img/slider2.jpg"/>
+		   		    <img id="ip3" src="img/slider3.png"/>
+		   		    <img id="ip4" src="img/slider4.png"/>
+		   		    <p class="genghao">每一天，都可以更好。</p>
+		   		    </div>
+		   		    	</div>
+				   	<div class="slide">
+				   		<div class="music">
+				   		<p id="Musicfont">Apple&nbsp;Music&nbsp;火热呈现中</p>
+				   		 <img src="img/mc1.jpg" />
+				   		<img id="erji" src="img/erji.jpg" />	
+				   		 <!--<p id="xue">薛之谦-高尚&nbsp;-Single</p>-->
+				   		 <p id="pingjia">始于颜值，陷于才华，忠于人品</p>
+				   		 
+				   			<p class="a">AirPods<br/>无线，<br/>无繁琐，<br/>只有秒不可言，</p>
+				   		</div>
+				   	</div>
+			</div>
+		   </div>
+		<script src="js/jquery-1.12.4.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.easings.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.fullpage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scrolloverflow.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#fullpage").fullpage({
+					sectionsColor:["#eee","black","#ccc","blue"],  //背景颜色  和sction数量一致 
+					controlArrows:true,                                     //箭头 false去掉
+					verticalCentered:false,                                //false 去掉垂直居中
+					scrollingspeed:2000,                                     //滚动速度
+					anchors:['page1','page2','page3','page4'],               //锚链节 可以在地址栏#page  
+					   //导航
+					navigation:true,                                        //出现导航  点
+					navigationPosition:"right",                              //导航位置
+					navigationTooltips:["1","2","3","4"],                   //鼠标放上去 提示
+//					showActiveTooltip:true,                          //移到当前页面自动显示信息
+					loopTop:true,                                //滚动到最顶部后再向上直接到最后        
+					loopBottom:true,                              //滚动到最下后再向下直接到第一个
+					loopHorizontal:true,                    //横向slider幻灯片是否循环滚动，默认为true
+					scrollOverflow:true,                  //如果内容超出 引入scro  js  出现滚轮
+//					menu:"#fullpage"
+
+					afterLoad: function(anchorLink, index){
+//						var loadedSection = $(this);
+						//using index
+						if(index == 3){
+							$("#ip1").animate({"left":"350px"},1000,function(){
+								$("#ip2").animate({"left":"820px"},1000,function(){
+								  $("#ip3").animate({"left":"350px"},1000,function(){
+								  	 $("#ip4").animate({"left":"820px"},1000)
+								  })
+								})
+							})
+							$("#pingjia").animate({"left":"400px"},5000,function(){
+								$("#pingjia").animate({"left":"200px"},6000)
+							})
+							$(".a").animate({"top":"400px"},5000,function(){
+								$(".a").animate({"left":"1000px"},5000)
+							})
+						}
+						
+						if(index == 1){
+							$(".redapple1").fadeIn(function(){
+					            $(".redapple2").fadeIn(function(){
+					            	 $(".redapple3").fadeIn()
+					            })
+							})
+							$("#ziti").animate({"fontSize":"25px"},1000,function(){
+								$(this).animate({"top":"350px","left":"270px"},3000)
+									$(this).animate({"fontSize":"18px","left":"780px"},2000)
+							})
+						}
+						if(index == 2){
+							$("#two_phone").animate({"left":"500px"},1000,function(){
+	
+								$("#two_phone2").fadeIn(function(){
+									$("#two_phone").fadeOut(function(){
+										$("#two_phone3").fadeIn()
+									})
+								})
+							})
+						}
+					},
+					
+						onLeave:function(link,index){
+					    if(index==1){
+					    	$(".redapple1").fadeOut(function(){
+					            $(".redapple2").fadeOut(function(){
+					            	 $(".redapple3").fadeOut()
+					            })
+							})
+							$("#ziti").animate({"fontSize":"30px"},30,function(){
+								$(this).animate({"top":"350px","left":"250px"},30)
+									$(this).animate({"fontSize":"30px","left":"710px"},20)
+							})
+					    }
+						if(index == 3){
+							$("#ip1").animate({"left":"-450px"},10,function(){
+								$("#ip2").animate({"left":"-850px"},10,function(){
+								  $("#ip3").animate({"left":"-450px"},10,function(){
+								  	 $("#ip4").animate({"left":"-850px"},10)
+								  })
+								})
+							})
+							$("#pingjia").animate({"left":"-300px"},10,function(){
+								$("#pingjia").animate({"left":"-200px"},10)
+							})
+							$(".a").animate({"top":"250px"},10,function(){
+								$(".a").animate({"left":"600px"},10)
+							})
+						}	
+						
+						if(index == 2){
+							$("#two_phone").animate({"left":"0"},1000,function(){
+	
+								$("#two_phone2").fadeOut(function(){
+									$("#two_phone").fadeIn(function(){
+										$("#two_phone3").fadeOut()
+									})
+								})
+							})
+						}
+						}
+						
+						
+				})             //fullpage
+			})
+
+			
+			
+		</script>
+	</body>
+</html>
